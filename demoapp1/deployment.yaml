@@ -1,0 +1,24 @@
+#Testing
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: deploy01
+  name: deploy01
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: deploy01
+  template:
+    metadata:
+      labels:
+        run: deploy01
+    spec:
+      containers:
+      - image: sreeharshav/rollingupdate:v6
+        name: deploy01
+        env:
+        - name: APP_COLOR
+          value: pink
+
